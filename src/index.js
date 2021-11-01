@@ -1,6 +1,7 @@
 import './style.css';
 import { homeFunction } from './home.js';
 import { menuFunction } from './menu.js';
+import { contactFunction } from './contact.js';
 
 const contentDiv = document.getElementById("content");
 const innerContentDiv = document.createElement("div");
@@ -50,6 +51,11 @@ homeButton.addEventListener("click", () => {
 menuButton.addEventListener("click", () => {
   resetPage();
   menuFunction();
+});
+
+contactButton.addEventListener("click", () => {
+  resetPage();
+  contactFunction();
 });
 
 

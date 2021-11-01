@@ -1,6 +1,11 @@
 import './style.css';
+import { homeFunction } from './home.js';
+import { menuFunction } from './menu.js';
 
 const contentDiv = document.getElementById("content");
+const innerContentDiv = document.createElement("div");
+innerContentDiv.id = "text-content";
+
 const headerContainer = document.createElement("header");
 headerContainer.className = "navbar";
 
@@ -20,28 +25,32 @@ headerContainer.appendChild(homeButton);
 headerContainer.appendChild(menuButton);
 headerContainer.appendChild(contactButton);
 
-const innerContentDiv = document.createElement("div");
-innerContentDiv.className = "text-content";
-
-const title = document.createElement("h1");
-title.innerHTML = "Royal Kefta";
-
-const motto = document.createElement("p");
-motto.innerHTML = "Cheap and 'edible'";
-
 const footer = document.createElement("footer");
 footer.className = "footer";
 
 const copyright = document.createElement("p");
 copyright.innerHTML = "Copyright Royal Kefta incorporated. All rights reserved.";
 footer.appendChild(copyright);
-
-innerContentDiv.appendChild(title);
-innerContentDiv.appendChild(motto);
-innerContentDiv.appendChild(footer);
-
 contentDiv.appendChild(headerContainer);
 contentDiv.appendChild(innerContentDiv);
 contentDiv.appendChild(footer);
 
-console.log(headerContainer);
+function resetPage() {
+  const newInnerContentDiv = document.createElement("div");
+  newInnerContentDiv.id = "text-content";
+  const oldInnerContentDiv = document.getElementById("text-content");
+  oldInnerContentDiv.parentNode.replaceChild(newInnerContentDiv, oldInnerContentDiv);
+};
+
+homeButton.addEventListener("click", () => {
+  resetPage();
+  homeFunction();
+});
+
+menuButton.addEventListener("click", () => {
+  resetPage();
+  menuFunction();
+});
+
+
+homeFunction();
